@@ -26,6 +26,10 @@ RUN --mount=type=ssh \
     /etc/apt/sources.list.d/docker.list /etc/apt/sources.list.d/nvidia-docker.list \
     /usr/include /usr/share/doc /usr/lib/gcc /usr/lib/jvm /usr/lib/llvm*
 
+# Copy launch and startup files
+COPY docker/openadkit/startup /autoware
+COPY docker/openadkit/launch /autoware
+
 # Create entrypoint
 COPY docker/openadkit/etc/ros_entrypoint.sh /ros_entrypoint.sh
 RUN chmod +x /ros_entrypoint.sh
