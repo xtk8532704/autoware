@@ -11,7 +11,7 @@ COPY autoware.repos /autoware/
 # Dependencies
 RUN --mount=type=ssh \
   mkdir src \
-  && vcs import src < autoware.repos \
+  && vcs import src < autoware.repos --recursive \
   && apt-get update \
   && rosdep update \
   && DEBIAN_FRONTEND=noninteractive rosdep install -y -t exec --ignore-src --from-paths src --rosdistro "$ROS_DISTRO" \

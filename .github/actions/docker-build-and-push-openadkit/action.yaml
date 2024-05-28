@@ -51,6 +51,17 @@ runs:
       shell: bash
 
     # openadkit modular images metadata
+    - name: Docker meta for openadkit:perception-localization
+      id: meta-perception-localization
+      uses: docker/metadata-action@v4
+      with:
+        images: ghcr.io/${{ github.repository_owner }}/${{ inputs.bake-target }}
+        tags: ${{ steps.set-docker-tags.outputs.tags }}
+        bake-target: docker-metadata-action-perception-localization
+        flavor: |
+          latest=false
+          suffix=-planning-control${{ inputs.tag-arch }}
+
     - name: Docker meta for openadkit:planning-control
       id: meta-planning-control
       uses: docker/metadata-action@v4
@@ -99,6 +110,7 @@ runs:
         push: ${{ inputs.allow-push == 'true' }}
         files: |
           docker/${{ inputs.bake-target }}/docker-bake.hcl
+          ${{ steps.meta-perception-localization.outputs.bake-file }}
           ${{ steps.meta-planning-control.outputs.bake-file }}
           ${{ steps.meta-visualizer.outputs.bake-file }}
           ${{ steps.meta-simulator.outputs.bake-file }}
@@ -115,6 +127,7 @@ runs:
         push: false
         files: |
           docker/${{ inputs.bake-target }}/docker-bake.hcl
+          ${{ steps.meta-perception-localization.outputs.bake-file }}
           ${{ steps.meta-planning-control.outputs.bake-file }}
           ${{ steps.meta-visualizer.outputs.bake-file }}
           ${{ steps.meta-simulator.outputs.bake-file }}

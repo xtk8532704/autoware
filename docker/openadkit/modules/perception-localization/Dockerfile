@@ -1,16 +1,17 @@
 ARG ARCH
-FROM ghcr.io/autowarefoundation/autoware:latest-base-${ARCH} as visualizer
+FROM ghcr.io/autowarefoundation/autoware:latest-base-${ARCH} as planning-control
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG ROS_DISTRO
 ARG LIB_DIR
 
 # Copy install folder from prebuilt
-COPY --from=ghcr.io/autowarefoundation/autoware:latest-prebuilt /autoware/install/ /autoware/install/
+COPY --from=ghcr.io/autowarefoundation/autoware:latest-prebuilt-cuda /autoware/install/ /autoware/install/
 COPY autoware.repos /autoware/
 
 # Dependencies
 RUN --mount=type=ssh \
-  mkdir src \
+  ./setup-dev-env.sh -y --module perception-localization ${SETUP_ARGS} --download-artifacts --no-cuda-drivers --runtime openadkit \
+  && mkdir src \
   && vcs import src < autoware.repos --recursive \
   && apt-get update \
   && rosdep update \

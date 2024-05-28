@@ -122,3 +122,55 @@ repositories:
     type: git
     url: https://github.com/autowarefoundation/autoware_individual_params.git
     version: main
+  # PIX INTEGRATION
+  # pixkit_param
+  param/autoware_individual_params:
+    type: git
+    url: https://github.com/pixmoving-moveit/autoware_individual_params.git
+    version: feature/pixkit_sensors
+  sensor_component/external/ros2_socketcan:
+    type: git
+    url: https://github.com/autowarefoundation/ros2_socketcan.git
+    version: 1.1.0
+  sensor_component/external/nmea_navsat_driver:
+    type: git
+    url: https://github.com/pixmoving-moveit/nmea_navsat_driver.git
+    version: ros2
+  sensor_component/external/ultra_sonic_radar_driver:
+    type: git
+    url: https://github.com/pixmoving-moveit/ultra_sonic_radar_driver.git
+    version: main
+  sensor_component/external/ars408_driver:
+    type: git
+    url: https://github.com/tier4/ars408_driver.git
+    version: main
+  sensor_component/external/rslidar_sdk:
+    type: git
+    url: https://github.com/pixmoving-moveit/rslidar_sdk.git
+    version: main
+  sensor_component/external/rslidar_msg:
+    type: git
+    url: https://github.com/RoboSense-LiDAR/rslidar_msg.git
+    version: main
+  sensor_component/external/ouster-ros:
+    type: git
+    url: https://github.com/ouster-lidar/ouster-ros.git
+    version: ros2
+  sensor_component/external/ultra_sonic_radar_detector:
+    type: git
+    url: https://github.com/pixmoving-moveit/ultra_sonic_radar_detector.git
+    version: main
+  # pixkit_sensor_kit
+  sensor_kit/external/pixkit_sensor_kit_launch:
+    type: git
+    url: https://github.com/pixmoving-moveit/pixkit_sensor_kit_launch.git
+    version: main
+  # pixkit_vehicle
+  vehicle/external/pix_driver:
+    type: git
+    url: https://github.com/pixmoving-moveit/pix_driver.git
+    version: main
+  vehicle/pixkit_launch:
+    type: git
+    url: https://github.com/pixmoving-moveit/pixkit_launch.git
+    version: main
