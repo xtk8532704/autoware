@@ -30,7 +30,7 @@ jobs:
 
   docker-build-and-push-main:
     needs: load-env
-    runs-on: ubuntu-latest
+    runs-on: buildjet-32vcpu-ubuntu-2204
     strategy:
       fail-fast: false
       matrix:
