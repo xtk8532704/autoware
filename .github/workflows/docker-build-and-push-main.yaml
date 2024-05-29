@@ -70,7 +70,7 @@ jobs:
       - name: Run vcs import
         run: |
           mkdir src
-          vcs import src < autoware.repos
+          vcs import src < autoware.repos --recursive
 
       - name: Build 'Autoware'
         uses: ./.github/actions/docker-build-and-push
