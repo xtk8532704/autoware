@@ -26,8 +26,9 @@ RUN --mount=type=ssh \
     /usr/include /usr/share/doc /usr/lib/gcc /usr/lib/jvm /usr/lib/llvm*
 
 # Copy launch and startup files
-COPY docker/openadkit/startup /autoware
-COPY docker/openadkit/launch /autoware
+COPY docker/openadkit/startup/ /autoware/startup/
+COPY docker/openadkit/launch /autoware/launch/
+RUN chmod +x /autoware/startup/*.sh
 
 # Create entrypoint
 COPY docker/openadkit/etc/ros_entrypoint.sh /ros_entrypoint.sh

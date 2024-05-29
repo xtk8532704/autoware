@@ -35,6 +35,11 @@ RUN --mount=type=ssh \
 
 COPY --from=ghcr.io/autowarefoundation/autoware:latest-prebuilt /autoware/install /autoware/install
 
+# Copy launch and startup files
+COPY docker/openadkit/startup/ /autoware/startup/
+COPY docker/openadkit/launch /autoware/launch/
+RUN chmod +x /autoware/startup/*.sh
+
 # Create entrypoint
 COPY docker/openadkit/etc/ros_entrypoint.sh /ros_entrypoint.sh
 RUN chmod +x /ros_entrypoint.sh
