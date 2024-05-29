@@ -1,5 +1,5 @@
 ARG ARCH
-FROM ghcr.io/autowarefoundation/autoware:latest-base-${ARCH} as planning-control
+FROM ghcr.io/autowarefoundation/autoware:latest-base-${ARCH} as perception-localization
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG ROS_DISTRO
 ARG LIB_DIR
