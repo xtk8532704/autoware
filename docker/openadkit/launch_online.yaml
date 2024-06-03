@@ -2,7 +2,7 @@ version: "2.17"
 
 services:
   planning-control:
-    image: ghcr.io/autowarefoundation/autoware:latest-runtime-cuda-amd64
+    image: ghcr.io/oguzkaganozt/openadkit:latest-planning-control-amd64
     volumes:
       - /dev/shm:/dev/shm
       - /etc/localtime:/etc/localtime:ro
@@ -16,7 +16,7 @@ services:
     command: /bin/sh -c "bash /autoware/startup/start_planning.sh"
 
   perception-localization:
-    image: ghcr.io/autowarefoundation/autoware:latest-runtime-cuda-amd64
+    image: ghcr.io/oguzkaganozt/openadkit:latest-perception-localization-amd64
     volumes:
       - /dev/shm:/dev/shm
       - /etc/localtime:/etc/localtime:ro
