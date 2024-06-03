@@ -33,7 +33,7 @@ RUN --mount=type=ssh \
     /etc/apt/sources.list.d/docker.list /etc/apt/sources.list.d/nvidia-docker.list \
     /usr/include /usr/share/doc /usr/lib/gcc /usr/lib/jvm /usr/lib/llvm*
 
-COPY --from=ghcr.io/autowarefoundation/autoware:latest-prebuilt /autoware/install /autoware/install
+COPY --from=ghcr.io/oguzkaganozt/autoware:latest-prebuilt /autoware/install /autoware/install
 
 # Copy launch and startup files
 COPY docker/openadkit/startup/ /autoware/startup/

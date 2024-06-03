@@ -5,7 +5,7 @@ ARG ROS_DISTRO
 ARG LIB_DIR
 
 # Copy install folder from prebuilt
-COPY --from=ghcr.io/autowarefoundation/autoware:latest-prebuilt /autoware/install/ /autoware/install/
+COPY --from=ghcr.io/oguzkaganozt/autoware:latest-prebuilt /autoware/install/ /autoware/install/
 COPY autoware.repos /autoware/
 
 # Dependencies
