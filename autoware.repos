@@ -144,7 +144,7 @@ repositories:
     type: git
     url: https://github.com/tier4/pacmod_interface.git
     version: f3690802c12d1f6335df9f9d695f594ddbac04c6
-  feature/pixkit_sensors
+  # feature/pixkit_sensors
   param/autoware_individual_params:
     type: git
     url: https://github.com/pixmoving-moveit/autoware_individual_params.git
