@@ -1,0 +1,41 @@
+version: '3'
+services:
+  perception-localization:
+    build:
+      context: ../../
+      dockerfile: docker/modules/perception-localization/Dockerfile
+    container_name: perception-localization
+    network_mode: "host"
+    volumes:
+      - /dev/shm:/dev/shm
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+      - ${AUTOWARE_MAP_PATH}:/autoware_map
+    environment:
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - DISPLAY=:0
+      - ROS_DOMAIN_ID=99
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    command: ros2 launch launch/perception-localization.launch.xml map_path:=/autoware_map vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
+
+  planning-control:
+    build:
+      context: ../../
+      dockerfile: docker/modules/planning-control/Dockerfile
+    container_name: planning-control
+    network_mode: "host"
+    volumes:
+      - /dev/shm:/dev/shm
+      - /etc/localtime:/etc/localtime:ro
+      - ${AUTOWARE_MAP_PATH}:/autoware_map
+    environment:
+      - ROS_DOMAIN_ID=99
+    depends_on:
+      - perception-localization
+    command: ros2 launch launch/planning-control.launch.xml map_path:=/autoware_map vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
